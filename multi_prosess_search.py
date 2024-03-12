@@ -105,11 +105,8 @@ def multi_threads(files, patterns):
             files3.append(file)
         i += 1
 
-    file_list = (files1, files2, files3)
-    p1 = Process(target=worker, args=(file_list[0], patterns_list, q))
-
+    p1 = Process(target=worker, args=(files1, patterns_list, q))
     p2 = Process(target=worker, args=(files2, patterns_list, q))
-
     p3 = Process(target=worker, args=(files3, patterns_list, q))
 
     p1.start()
